@@ -30,5 +30,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "seed_dummies.ts", "truncate_db.ts", "test_db.ts", "test_unique.ts", "erase_db.mjs", "test_db.mjs", "refactor.mjs", "re-embed.mjs"]
 }
