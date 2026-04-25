@@ -5,7 +5,7 @@ import db from '@/lib/db';
 import { getUserFromToken } from '@/lib/auth';
 
 const ai = new GoogleGenAI({ 
-  apiKey: process.env.GEMINI_API_KEY || 'AIzaSyBaGp3bDXnu5KLlV8pvvjEvfDjuXmcmAuc' 
+  apiKey: process.env.GEMINI_API_KEY! 
 });
 
 export async function POST(request: Request) {
