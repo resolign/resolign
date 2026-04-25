@@ -48,11 +48,18 @@ export async function POST(request: Request) {
       UPDATE users 
       SET bio = ?, embedding = ?, want_bio = ?, want_embedding = ?, contact_info = ? 
       WHERE id = ?
-    `, args: [bio || '', embeddingStr, wantBio || '', wantEmbeddingStr, contact_info || user.contact_info, user.id] });
+    `, args: [
+      (bio !== undefined ? bio : user.bio) ?? null, 
+      embeddingStr ?? null, 
+      (wantBio !== undefined ? wantBio : user.want_bio) ?? null, 
+      wantEmbeddingStr ?? null, 
+      (contact_info !== undefined ? contact_info : user.contact_info) ?? null, 
+      user.id
+    ] });
 
     return NextResponse.json({ success: true, message: 'Profile updated' });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating profile:', error);
-    return NextResponse.json({ error: 'Failed to update profile' }, { status: 500 });
+    return NextResponse.json({ error: error.message || String(error) || 'Failed to update profile' }, { status: 500 });
   }
 }

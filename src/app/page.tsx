@@ -162,16 +162,24 @@ export default function App() {
   const handleProfileUpdate = async (e: any) => {
     e.preventDefault();
     setUpdatingProfile(true);
-    const res = await fetch('/api/profile', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ bio })
-    });
-    setUpdatingProfile(false);
-    if (res.ok) {
-      setUser((prev: any) => ({ ...prev, bio }));
-      setIsEditingProfile(false);
-      setToastMessage('Profile Saved!');
+    try {
+      const res = await fetch('/api/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bio })
+      });
+      const data = await res.json();
+      setUpdatingProfile(false);
+      if (res.ok) {
+        setUser((prev: any) => ({ ...prev, bio }));
+        setIsEditingProfile(false);
+        setToastMessage('Profile Saved!');
+      } else {
+        setToastMessage('Error: ' + (data.error || 'Failed to save'));
+      }
+    } catch(err) {
+      setUpdatingProfile(false);
+      setToastMessage('Network Error');
     }
   };
 
@@ -179,15 +187,23 @@ export default function App() {
     e.preventDefault();
     if (!wantBio.trim()) return;
     setUpdatingDesire(true);
-    const res = await fetch('/api/profile', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ wantBio })
-    });
-    setUpdatingDesire(false);
-    if (res.ok) {
-      setUser({ ...user, hasWantEmbedding: true, want_bio: wantBio });
-      fetchConnections('desire', 1);
+    try {
+      const res = await fetch('/api/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ wantBio })
+      });
+      const data = await res.json();
+      setUpdatingDesire(false);
+      if (res.ok) {
+        setUser({ ...user, hasWantEmbedding: true, want_bio: wantBio });
+        fetchConnections('desire', 1);
+      } else {
+        setToastMessage('Error: ' + (data.error || 'Failed to update desire'));
+      }
+    } catch(err) {
+      setUpdatingDesire(false);
+      setToastMessage('Network Error');
     }
   };
 
