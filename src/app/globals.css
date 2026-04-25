@@ -273,23 +273,29 @@ p {
     position: static;
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 0.25rem;
   }
 
   .sidebar h1 {
-    margin-bottom: 0;
-    margin-right: 1rem;
-    font-size: 1.4rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    margin-right: 0;
+    font-size: 1.6rem;
   }
 
   .nav-item {
     margin-bottom: 0;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .sidebar-bottom {
