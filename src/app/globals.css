@@ -326,8 +326,14 @@ p {
   }
 
   .tabs-container {
-    flex-direction: row;
-    gap: 0.5rem;
+    flex-direction: row !important;
+    gap: 0.25rem;
+  }
+
+  .tab-button {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.4rem;
+    white-space: nowrap;
   }
 }
 
