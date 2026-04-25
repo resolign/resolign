@@ -260,3 +260,68 @@ p {
   padding: 8px;
   border-radius: 4px;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sidebar h1 {
+    margin-bottom: 0;
+    margin-right: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .nav-item {
+    margin-bottom: 0;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .sidebar-bottom {
+    width: 100%;
+    border-top: none;
+    padding-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .sidebar-bottom div {
+    margin-bottom: 0 !important;
+  }
+
+  .sidebar-bottom button {
+    width: auto !important;
+    padding: 0.3rem 0.8rem !important;
+  }
+
+  .main-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .tabs-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
